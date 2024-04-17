@@ -1,0 +1,245 @@
+use class10 ;
+
+create table test2(
+c1 varchar(50),
+c2 date,
+c3 int);
+
+create table test3(
+c1 varchar(50),
+c2 date,
+c3 int );
+
+create table test4(
+c1 varchar(50),
+c2 date,
+c3 int );
+
+insert into test2 values("abc11" , sysdate(), 435456);
+
+delimiter //
+create trigger to_delete_others_before_observation
+before delete on test2 for each row 
+begin
+	insert into test3(c1,c2,c3) values (old.c1, old.c2,old.c3);
+end; //
+
+delete from test2 where c1 = 'abc11';
+
+set sql_safe_updates = 0
+
+select * from test2;
+select * from test3;
+select * from test4;
+
+
+
+delimiter //
+CREATE TRIGGER trigger_name    
+    (AFTER | BEFORE) (INSERT | UPDATE | DELETE)  
+         ON table_name FOR EACH ROW    
+         BEGIN    
+        --variable declarations    
+        --trigger code    
+END; 
+
+create table T1(
+course_id int , 
+course_desc varchar(50),
+course_mentor varchar(60),
+course_price int ,
+course_discount int,
+create_date date);
+
+create table T2(
+course_metor_update varchar(50), 
+course_price_update int ,
+course_discount_update int );
+
+
+insert into t1 ( 
+course_id, course_desc, course_mentor, course_price, course_discount) 
+value(102, "FSDA", "sudhanshu", 4000, 10);
+
+select * from t1 ;
+
+delimiter //
+create trigger t1_before_insert
+before insert
+on t1 for each row
+begin
+	set new.create_date = sysdate();
+end; // 
+
+insert into t1 ( 
+course_id, course_desc, course_mentor, course_price, course_discount) 
+value(103, "FSDA", "sudhanshu", 4000, 10);
+
+delimiter //
+create trigger t1_after_insert
+after insert
+on t1 for each row
+begin
+	insert into t1 (create_date) values(sysdate());
+end; //
+
+
+insert into t1 ( 
+course_id, course_desc, course_mentor, course_price, course_discount) 
+value(104, "FSDA", "sudhanshu", 4000, 10);
+
+
+
+create table T3(
+course_metor_update varchar(50), 
+course_price_update int ,
+course_discount_update int );
+
+
+create table T4(
+course_metor_update varchar(50), 
+course_price_update int ,
+course_discount_update int ) ;
+
+delimiter //
+create trigger t3_after_insert
+after insert on t3 for each row
+begin
+	insert into t4 (create_date) values (sysdate());
+end; //
+
+
+insert into t3 values ("dk", 10000, 2000) ;
+
+
+create table course_2(
+course_id int , 
+course_desc varchar(50),
+course_mentor varchar(60),
+course_price int ,
+course_discount int,
+create_date date,
+user_info varchar(50)  );
+
+
+insert into course_2 (course_id,course_desc,course_mentor,course_price,course_discount) value(102,"FSDA","sudhanshu",4001,11);
+
+delimiter //
+create trigger course_before_insert1
+before insert 
+on course_2 for each row
+begin
+	declare user_val varchar(50);
+	set new.create_date = sysdate();
+    select user() into  user_val;
+    set new.user_info = user_val;
+end; //
+
+select * from course_2 ;
+
+
+insert into course_2 (course_id,course_desc,course_mentor,course_price,course_discount) value(103,"FSDA","sudhanshu",4001,11);
+
+select user();
+
+select sysdate();
+
+
+create table demo(
+c1 varchar(50),
+c2 date,
+c3 int);
+
+
+create table demo1(
+c11 varchar(50),
+c12 date,
+c13 int );
+
+
+create table demo2(
+c21 varchar(50),
+c22 date,
+c23 int );
+
+delimiter //
+create trigger to_update_others
+before insert on demo for each row 
+begin
+	insert into  demo2 values("xyz",sysdate(),23354);
+	insert into  demo1 values("xyz",sysdate(),23354);
+end; //
+
+
+insert into demo values ("java", "2000-12-05", 12000) ;
+insert into demo1 values ("py", "2000-12-05", 12000) ;
+
+select * from demo ;
+select * from demo1 ;
+select * from demo2 ;
+
+
+SELECT LOCALTIME();
+
+SELECT LOCALTIMESTAMP();
+
+SELECT CURRENT_TIME();
+
+create table demo3(
+c31 varchar(50),
+c32 date,
+c33 int );
+
+delimiter //
+create trigger to_update_others1
+before insert on demo2 for each row 
+begin
+	insert into  demo3 values("abc",sysdate(),23354);
+end; //
+
+insert into demo1 values ("py", "2000-12-05", 12000) ;
+
+select * from demo3 ;
+
+create table demo4(
+c41 varchar(50),
+c42 date,
+c43 int );
+
+delimiter //
+create trigger to_update_only
+before update on demo3 for each row 
+begin
+	insert into demo4 values("pqr",sysdate(),23354);
+end; //
+
+select * from demo3 ;
+
+update demo3 set c31 = "xyz1" where c31 = "abc" ;
+
+select * from demo4 ;
+
+
+
+
+after insert 
+before insert
+after update
+before update
+after delete
+before delete
+
+
+
+t1 = trigger
+t2 -----
+t3 = trigger
+
+
+
+t1 = 
+insert = t2
+update = t3
+delete = t4
+
+
