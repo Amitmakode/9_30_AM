@@ -1,0 +1,111 @@
+
+### Basic Level:
+1. List all films in the Sakila database:
+   - Write a query to list all films, including their titles and release years.
+
+2. Find customers who live in a specific city:
+   - Write a query to list all customers from the city “New York”.
+
+3. List the names of actors who starred in a particular film:
+   - Find all the actors who appeared in the film "ACADEMY DINOSAUR".
+
+4. Find the total number of films in the database:
+   - Write a query to count how many films are in the database.
+
+### Intermediate Level:
+1. Find the total payment amount by a customer:
+   - Write a query to calculate the total amount a customer with the `customer_id = 5` has paid.
+
+2. List films with more than 3 actors:
+   - Find films that have more than 3 actors associated with them.
+
+3. List films by a specific language:
+   - Write a query to find all films that are in the language "English".
+
+4. Calculate the average rental duration for all films:
+   - Write a query to calculate the average rental duration for all films in the database.
+
+5. Find customers who have rented a specific film:
+   - List all customers who have rented the film "LORD OF THE RINGS".
+
+### Advanced Level:
+1. Find the top 5 most rented films:
+   - Write a query to list the top 5 most rented films, based on the rental count.
+
+2. Get the most frequent payment method used by customers:
+   - Write a query to find the payment method that customers used the most.
+
+3. List the most profitable customers (based on payments):
+   - Write a query to list the top 10 customers who spent the most money on rentals.
+
+4. Find the total number of rentals and payments made in each month of 2005:
+   - Write a query to find the total rentals and total payments made for each month in the year 2005.
+
+5. Identify employees who made the most rentals in the past month:
+   - Write a query to find out which employees have processed the most rentals during the last month.
+
+6. Find films that have not been rented yet:
+   - Write a query to list all films that have never been rented.
+
+
+### Advanced SQL Practice Questions:
+
+1. Find the most popular films per store:
+   - Write a query that finds the most rented film for each store in the Sakila database. For this, you’ll need to consider both the `rental` and `inventory` tables and perform aggregation based on store and film.
+
+2. Identify customers who have never rented a film:
+   - Write a query to identify customers who have never rented any films. You'll need to use a `LEFT JOIN` between the `customer` and `rental` tables.
+
+3. Find the average number of films rented per customer:
+   - Write a query to calculate the average number of films rented by each customer. Use appropriate aggregation and `GROUP BY` clauses.
+
+4. Identify films rented by a particular customer (including rental date):
+   - Write a query that lists the films rented by a customer with `customer_id = 12`, including the rental date and return date.
+
+5. Identify the top 3 employees with the highest payment collection:
+   - Write a query to find the top 3 employees who collected the most money in payments. Use the `payment` and `staff` tables, joining them appropriately.
+
+6. Find films with the highest average rental duration:
+   - Write a query to find films that have the longest average rental duration. You’ll need to group by film and calculate the average `rental_duration` for each.
+
+7. Customers who rented films for more than 5 days:
+   - Write a query to find all customers who have rented films for more than 5 days in total. This will require checking the total number of days they’ve rented films across all rentals.
+
+8. Find actors who were featured in more than one film genre:
+   - Write a query to find all actors who have acted in films belonging to more than one genre. You'll need to join the `actor`, `film_actor`, `film`, and `film_category` tables.
+
+9. Find the top 5 highest-earning films in the last quarter of 2005:
+   - Write a query to find the top 5 highest-earning films in the last quarter of 2005 (October, November, December). You’ll need to join `payment`, `rental`, and `inventory`, and filter by date.
+
+10. Find the number of rentals for each film in the year 2006:
+    - Write a query to calculate the total number of rentals for each film during the year 2006.
+
+11. Find the most frequent rental duration per category:
+    - Write a query to find the most common rental duration (mode) for films in each category (e.g., Action, Drama, etc.).
+
+12. Retrieve the top 5 most rented films by customers in the past 6 months:
+    - Write a query to retrieve the 5 most rented films over the last 6 months. Use date functions to filter for rentals within that timeframe.
+
+13. Find films that have been rented but never paid for:
+    - Write a query to list all films that have been rented (i.e., appear in the `rental` table) but have never had an associated payment (i.e., no corresponding `payment` entry).
+
+14. Find customers who rented the same film more than once:
+    - Write a query to identify customers who rented the same film more than once. Use `GROUP BY` and `HAVING` to filter for multiple rentals of the same film by a single customer.
+
+15. Find the film with the highest revenue per rental:
+    - Write a query to find the film that generated the highest revenue per rental. You’ll need to join `rental`, `payment`, and `inventory`, and then group by `film_id` to calculate revenue per rental.
+
+16. Calculate the total rental revenue generated by each store:
+    - Write a query to calculate the total rental revenue for each store. You'll need to join `payment`, `rental`, and `inventory`, and aggregate the results by store.
+
+17. Find customers who rented a film but have not returned it yet:
+    - Write a query to identify customers who rented a film but have not returned it, i.e., whose `return_date` is NULL.
+
+18. Find the number of films rented per store per month for 2006:
+    - Write a query that lists the number of films rented by each store per month during the year 2006.
+
+19. Find employees who handled the highest number of different films rented:
+    - Write a query to find out which employees have processed the highest number of different films rented.
+
+20. Generate a report showing customer information and the number of films they rented, sorted by the number of films rented:
+    - Write a query that lists each customer’s name, address, email, and the total number of films they rented, sorted in descending order by the number of films rent
